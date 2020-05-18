@@ -3,7 +3,7 @@ var global = 0;
 function myFunction() {
     var local = 1;
 }
-
+/*gives error because local is nested in myFunction() */
 function twoFunction() {
     document.getElementById("error").innerHTML = global + "+" + local;
 }
