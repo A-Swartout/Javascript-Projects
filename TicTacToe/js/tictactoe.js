@@ -45,7 +45,7 @@ function checkWinConditions() {
     else if (arrayIncludes('2X', '5X', '8X')) { drawWinLine(508, 50, 508, 558); }
     else if (arrayIncludes('6X', '4X', '2X')) { drawWinLine(100, 508, 510, 90); }
     else if (arrayIncludes('0X', '4X', '8X')) { drawWinLine(100, 100, 520, 520); }
-    else if (arrayIncludes('0O', '1O', '2O')) { drawWinLine(50, 304, 558, 100); }
+    else if (arrayIncludes('0O', '1O', '2O')) { drawWinLine(50, 100, 558, 100); }
     else if (arrayIncludes('3O', '4O', '5O')) { drawWinLine(50, 304, 558, 304); }
     else if (arrayIncludes('6O', '7O', '8O')) { drawWinLine(50, 508, 558, 508); }
     else if (arrayIncludes('0O', '3O', '6O')) { drawWinLine(100, 50, 304, 558); }
@@ -61,7 +61,7 @@ function checkWinConditions() {
         const a = selectedSquares.includes(squareA);
         const b = selectedSquares.includes(squareB);
         const c = selectedSquares.includes(squareC);
-        if (a === true && b === true && c == true) {return true;}
+        if (a === true && b === true && c === true) {return true;}
     }
 }
 
@@ -82,8 +82,8 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
         y1 = coordY1,
         x2 = coordX2,
         y2 = coordY2,
-        x = x2,
-        y = y2;
+        x = x1,
+        y = y1;
 
     function animateLineDrawing() {
         const animationLoop = requestAnimationFrame(animateLineDrawing);
@@ -99,7 +99,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
             if (y < y2) {y += 10;}
             if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop); }
         }
-        if (x1 <= x2 && y1 <= y2) {
+        if (x1 <= x2 && y1 >= y2) {
             if (x < x2) {x += 10;}
             if (y > y2) {y -= 10;}
             if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
